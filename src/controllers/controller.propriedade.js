@@ -2,7 +2,8 @@ import modelPropriedade from "../models/model.propriedade.js"; //importando o mo
 
 /*Status Code Usados
 500 - Erro Interno
-401 - Não autorizado/Não encontrado
+401 - Não autorizado
+404 - Não encontrado
 201 - Inserido com Sucesso
 200 - Alterado/Pesquisa com Sucesso
 */
@@ -24,7 +25,7 @@ function Alterar(req, res){
         if (err){
             res.status(500).send(err)
         } else if (result.length == 0){
-            res.status(401).json({erro:'Propriedade não encontrado.'})
+            res.status(404).json({erro:'Propriedade não encontrado.'})
         } else{            
             res.status(200).send('Propriedade alterada com sucesso.')
         }
@@ -36,7 +37,7 @@ function Excluir(req, res){
         if (err){
             res.status(500).send(err)
         } else if (result.length == 0){
-            res.status(401).json({erro:'Propriedade não encontrado.'})
+            res.status(404).json({erro:'Propriedade não encontrado.'})
         } else{            
             res.status(200).send('Propriedade excluída com sucesso.')
         }
@@ -48,7 +49,7 @@ function ListarId(req, res){
         if (err){
             res.status(500).send(err)
         } else if (result.length == 0) {
-            res.status(401).send('Nenhuma Propriedade econtrada.')
+            res.status(404).send('Nenhuma Propriedade econtrada.')
         } else{
             res.status(200).json(result[0])
         }
@@ -60,7 +61,7 @@ function ListarPorNome(req, res){
         if (err){
             res.status(500).send(err)
         } else if (result.length == 0) {
-            res.status(401).send('Nenhuma Propriedade econtrada.')
+            res.status(404).send('Nenhuma Propriedade econtrada.')
         } else{
             res.status(200).json(result)
         }

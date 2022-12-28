@@ -2,7 +2,8 @@ import modelProdutor from "../models/model.produtor.js";  //importando o model p
 
 /*Status Code Usados
 500 - Erro Interno
-401 - Não autorizado/Não encontrado
+401 - Não autorizado
+404 - Não encontrado
 201 - Inserido com Sucesso
 200 - Alterado/Pesquisa com Sucesso
 */
@@ -24,7 +25,7 @@ function Alterar(req, res){
         if (err){
             res.status(500).send(err)
         } else if (result.length == 0){
-            res.status(401).json({erro:'Produtor não encontrado.'})
+            res.status(404).json({erro:'Produtor não encontrado.'})
         } else{           
             res.status(200).send('Produtor alterado com sucesso.') 
         }
@@ -36,7 +37,7 @@ function Excluir(req, res){
         if (err){
             res.status(500).send(err)
         } else if (result.length == 0){
-            res.status(401).json({erro:'Produtor não encontrado.'})
+            res.status(404).json({erro:'Produtor não encontrado.'})
         } else{           
             res.status(200).send('Produtor excluído com sucesso.') 
         }
@@ -48,7 +49,7 @@ function ListarId(req, res){
         if (err){
             res.status(500).send(err)
         } else if (result.length == 0) {
-            res.status(401).send('Nenhum Produtor econtrado.')
+            res.status(404).send('Nenhum Produtor econtrado.')
         } else{
             res.status(200).json(result[0])
         }
@@ -60,7 +61,7 @@ function ListarPorNome(req, res){
         if (err){
             res.status(500).send(err)
         } else if (result.length == 0) {
-            res.status(401).send('Nenhum Produtor econtrado.')
+            res.status(404).send('Nenhum Produtor econtrado.')
         } else{
             res.status(200).json(result)
         }
