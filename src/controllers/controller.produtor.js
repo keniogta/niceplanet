@@ -24,6 +24,18 @@ function Alterar(req, res){
     })
 }
 
+function Excluir(req, res){
+    modelProdutor.Excluir(req.params.id_produtor, (err, result) => {
+        if (err){
+            res.status(500).send(err)
+        } else if (result.length == 0){
+            res.status(401).json({erro:'Produtor não encontrado.'})
+        } else{           
+            res.status(200).send('Produtor excluído com sucesso.') 
+        }
+    })
+}
+
 function ListarId(req, res){
     modelProdutor.ListarId(req.params.id_produtor, (err, result) => {
         if (err){
@@ -48,4 +60,4 @@ function ListarPorNome(req, res){
     })
 }
 
-export default {Inserir, Alterar, ListarId, ListarPorNome};
+export default {Inserir, Alterar, Excluir, ListarId, ListarPorNome};

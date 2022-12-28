@@ -48,6 +48,34 @@ function Alterar(dadosProdutor, cb){
     })
 }
 
+function Excluir(id_produtor, cb){
+    db.getConnection((err, conn) => {
+        conn.query('select p.idprodutor from produtor p where p.idprodutor = ?', [id_produtor], (err, result) => {
+            if (err){
+                cb(err, result)
+            } else if (result.length > 0) {
+                conn.beginTransaction((err) => {
+                    let ssql = 'update produtor ';
+                    ssql += 'set ativoprodutor = "N" ';
+                    ssql += 'where idprodutor = ?';
+                    conn.query(ssql,[id_produtor], (err, result) => {
+                        if (err){
+                            conn.rollback()                    
+                        } else{
+                            conn.commit()                    
+                        }
+        
+                        cb(err, result)
+                        conn.release()
+                    })
+                })
+            } else {
+                cb(err, result)
+            }
+        } )
+    })
+}
+
 function ListarId(id_produtor, cb){
     let ssql = 'select * from produtor where idprodutor = ?';
     db.query(ssql, [id_produtor], (err, result) => {
@@ -62,4 +90,4 @@ function ListarPorNome(dadosProdutor, cb){
     })
 }
 
-export default {Inserir, Alterar, ListarId, ListarPorNome};
+export default {Inserir, Alterar, Excluir, ListarId, ListarPorNome};
