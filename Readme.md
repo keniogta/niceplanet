@@ -1,0 +1,1 @@
+Olá, essa API faz parte do processo seletivo da NicePlanet
