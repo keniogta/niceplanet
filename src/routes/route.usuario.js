@@ -3,6 +3,7 @@ import controllerUsuario from "../controllers/controller.usuario.js"; //importan
 
 const routeUsuario = Router();
 
+//Rotas
 routeUsuario.post('/v1/usuarios/cadastro',controllerUsuario.Inserir);
 routeUsuario.put('/v1/usuarios/alterar',controllerUsuario.Alterar);
 routeUsuario.post('/v1/usuarios/excluir/:id_usuario',controllerUsuario.Excluir);

@@ -3,6 +3,7 @@ import controllerPropriedade from "../controllers/controller.propriedade.js"; //
 
 const routePropriedade = Router();
 
+//Rotas
 routePropriedade.post('/v1/propriedades/cadastro',controllerPropriedade.Inserir);
 routePropriedade.put('/v1/propriedades/alterar',controllerPropriedade.Alterar);
 routePropriedade.post('/v1/propriedades/excluir/:id_propriedade',controllerPropriedade.Excluir);

@@ -3,6 +3,7 @@ import controllerProdutor from "../controllers/controller.produtor.js"; //import
 
 const routeProdutor = Router();
 
+//Rotas
 routeProdutor.post('/v1/produtores/cadastro',controllerProdutor.Inserir);
 routeProdutor.put('/v1/produtores/alterar',controllerProdutor.Alterar);
 routeProdutor.post('/v1/produtores/excluir/:id_produtor',controllerProdutor.Excluir);

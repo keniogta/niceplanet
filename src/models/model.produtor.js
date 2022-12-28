@@ -1,19 +1,19 @@
-import { db } from "../config/database.js";
+import { db } from "../config/database.js"; //import para const "db" funçoes do database.js
 
 function Inserir(dadosProdutor, cb){
-    db.getConnection((err, conn) => {
-        conn.beginTransaction((err) => {
+    db.getConnection((err, conn) => { //abro um pool de conexao com bd
+        conn.beginTransaction((err) => { //inicio uma transação
             let ssql = 'insert into produtor (csusuario, nomeprodutor, cpfprodutor, ativoprodutor) ';
             ssql += 'values (?, ?, ?, "S")';
             conn.query(ssql,[dadosProdutor.idusuario, dadosProdutor.nome, dadosProdutor.cpf], (err, result) => {
-                if (err){
-                    conn.rollback()
-                    cb(err, result)
+                if (err){ //deu erro no insert
+                    conn.rollback() //desfaço a transação
+                    cb(err, result) //retorno o erro
                 } else{
-                    conn.commit()
-                    cb(undefined,{idprodutor:result.insertId})
+                    conn.commit() //gravo a transação
+                    cb(undefined,{idprodutor:result.insertId}) //retorno o id que foi gravado
                 }
-                conn.release()
+                conn.release() //libero o pool criado
             })
         })
     })
@@ -21,6 +21,7 @@ function Inserir(dadosProdutor, cb){
 
 function Alterar(dadosProdutor, cb){
     db.getConnection((err, conn) => {
+        //faço uma busca para verificar se existe o produtor com o id, caso exista, faço o update
         conn.query('select p.idprodutor from produtor p where p.idprodutor = ?', [dadosProdutor.idprodutor], (err, result) => {
             if (err){
                 cb(err, result)

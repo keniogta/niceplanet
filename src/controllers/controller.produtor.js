@@ -1,12 +1,19 @@
-import modelProdutor from "../models/model.produtor.js";
+import modelProdutor from "../models/model.produtor.js";  //importando o model produtor
+
+/*Status Code Usados
+500 - Erro Interno
+401 - Não autorizado/Não encontrado
+201 - Inserido com Sucesso
+200 - Alterado/Pesquisa com Sucesso
+*/
 
 function Inserir(req, res){
     modelProdutor.Inserir(req.body, (err, result) => {
         if (err){
-            res.status(500).send(err)
-        } else if (result.length == 0){
+            res.status(500).send(err) //qdo der erro interno no model, é passado a msg do erro
+        } else if (result.length == 0){ //caso retorne vazio, houve erro no insert
             res.status(401).json({erro:'Produtor não inserido.'})
-        } else{
+        } else{ //caso volte um valor (id), insert com suceso
             res.status(201).json(result)
         }
     })

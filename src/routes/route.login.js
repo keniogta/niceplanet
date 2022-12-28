@@ -3,6 +3,7 @@ import controllerLogin from "../controllers/controller.login.js"; //importando o
 
 const routeLogin = Router();
 
+//Rotas
 routeLogin.get('/v1/login',controllerLogin.Login);
 
 export default routeLogin;

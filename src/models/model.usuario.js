@@ -1,30 +1,31 @@
-import {db} from '../config/database.js';
+import {db} from '../config/database.js'; //import para const "db" funçoes do database.js
 import bcrypt from 'bcrypt';
 
 function Inserir(dadosUsuario, cb){
-    db.getConnection((err, conn) => {
-        conn.beginTransaction(async (err) => {
+    db.getConnection((err, conn) => { //abro um pool de conexao com bd
+        conn.beginTransaction(async (err) => { //inicio uma transação
             let ssql = 'insert into usuario (nomeusuario, senhausuario, ativousuario) ';
             ssql += 'values (?, ?, "S")';
 
             const SenhaCrip = await bcrypt.hash(dadosUsuario.senha, 10);
 
             conn.query(ssql, [dadosUsuario.nome, SenhaCrip], (err, result) => {
-                if (err){
-                    conn.rollback()
-                    cb(err, result)
+                if (err){ //deu erro no insert
+                    conn.rollback() //desfaço a transação
+                    cb(err, result) //retorno o erro
                 }else{
-                    conn.commit()
-                    cb(undefined,{idusuario:result.insertId})
+                    conn.commit() //gravo a transação
+                    cb(undefined,{idusuario:result.insertId}) //retorno o id que foi gravado
                 }
             })
-            conn.release(); //liberando conexao
+            conn.release(); //libero o pool criado
         })
     })
 }
 
 function Alterar(dadosUsuario, cb){
     db.getConnection((err, conn) => {
+        //faço uma busca para verificar se existe o usuario com o id, caso exista, faço o update
         conn.query('select u.idusuario from usuario u where u.idusuario = ?', [dadosUsuario.idusuario], (err, result) => {
             if (err) {
                 cb(err, result)
