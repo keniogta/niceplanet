@@ -1,5 +1,5 @@
-import { Router } from "express";
-import controllerPropriedade from "../controllers/controller.propriedade.js";
+import { Router } from "express"; //middleware de distribuição da rota
+import controllerPropriedade from "../controllers/controller.propriedade.js"; //importando o controler da propriedade
 
 const routePropriedade = Router();
 

@@ -13,4 +13,17 @@ Para esse projeto foi usado NodeJs salvando informações em um BD MySql.
     Windows;
     Postman : Responsavel para testar API, criar e solicitar conexões HTTP e HTTPs;
     VSCode  : Editor de texto;
+
+3. Arquivos
+    index    :   Arquivo de entrada da aplicação; (\src\index.js)
+    database :   Arquivo de configuração da conexão com MySql; (\src\config\database.js)
+    basic-auth  :   Arquvido de configuração de segurança basica; (\src\config\basic-auth.js)
+
+    3.1. Pasta Routes
+        Pasta que contem os arquivos de direcionamento das rotas, verbos (post, get, put,...)
+    3.2. Pasta Controllers
+        Pasta que contem os arquivos de tratamentos das request
+    3.3. Pasta Models
+        Pasta que contem os arquivos de manipulção do BD (select, insert, update,...)
     
+

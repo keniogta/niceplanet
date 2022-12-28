@@ -1,5 +1,5 @@
-import { Router } from "express";
-import controllerProdutor from "../controllers/controller.produtor.js";
+import { Router } from "express"; //middleware de distribuição da rota
+import controllerProdutor from "../controllers/controller.produtor.js"; //importando o controler do produtor
 
 const routeProdutor = Router();
 
