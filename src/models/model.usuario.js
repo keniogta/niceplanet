@@ -54,5 +54,34 @@ function Alterar(dadosUsuario, cb){
     })
 }
 
+function Exlcuir(id_usuario, cb){
+    db.getConnection((err, conn) => {
+        conn.query('select u.idusuario from usuario u where u.idusuario = ?', [id_usuario], (err, result) => {
+            if (err) {
+                cb(err, result)
+            } else if (result.length > 0) {
+                conn.beginTransaction(async (err) => {
+                    let ssql = 'update usuario ';
+                    ssql += 'set ativousuario = "N" '
+                    ssql += 'where idusuario = ?';
 
-export default {Inserir, Alterar};
+                    conn.query(ssql,[id_usuario], (err, result) =>{
+                        if (err){
+                            conn.rollback()
+                            cb(err,result)
+                        }else{
+                            conn.commit()
+                            cb(undefined,result)
+                        }
+                        conn.release()
+                    })           
+                })
+            } else {
+                cb(err, result)
+            }
+        })
+    })
+}
+
+
+export default {Inserir, Alterar, Exlcuir};

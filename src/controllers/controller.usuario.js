@@ -25,4 +25,16 @@ function Alterar(req, res){
     })
 }
 
-export default {Inserir, Alterar};
+function Excluir(req, res){
+    modelUsuario.Exlcuir(req.params.id_usuario, (err, result) => {
+        if (err){
+            res.status(500).send(err)
+        }else if (result.length == 0){
+            res.status(401).json({erro:'Usuário não encontrado.'})
+        }else{
+            res.status(200).send('Usuário excluído com sucesso.')
+        }
+    })
+}
+
+export default {Inserir, Alterar, Excluir};
