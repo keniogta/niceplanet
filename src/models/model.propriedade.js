@@ -47,6 +47,34 @@ function Alterar(dadosPropriedade, cb){
     })
 }
 
+function Excluir(id_propriedade, cb){
+    db.getConnection((err, conn) => {
+        conn.query('select p.idpropriedade from propriedade p where p.idpropriedade = ?', [id_propriedade], (err, result) => {
+            if (err){
+                cb(err, result)
+            } else if (result.length > 0){
+                conn.beginTransaction((err) => {
+                    let ssql = 'update propriedade ';
+                    ssql += 'set ativopropriedade = "N" ';
+                    ssql += 'where idpropriedade = ?';
+                    conn.query(ssql,[id_propriedade], (err, result) => {
+                        if (err){
+                            conn.rollback()                    
+                        } else{
+                            conn.commit()                    
+                        }
+        
+                        cb(err, result)
+                        conn.release()
+                    })
+                })
+            } else {
+                cb(err,result)
+            }
+        })
+    })
+}
+
 function ListarId(id_propriedade, cb){
     let ssql = 'select * from propriedade where idpropriedade = ?';
     db.query(ssql, [id_propriedade], (err, result) => {
@@ -61,4 +89,4 @@ function ListarPorNome(dadosPropriedade, cb){
     })
 }
 
-export default {Inserir, Alterar, ListarId, ListarPorNome};
+export default {Inserir, Alterar, ListarId, ListarPorNome, Excluir};
