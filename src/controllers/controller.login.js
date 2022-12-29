@@ -3,7 +3,8 @@ import bcrypt from 'bcrypt';                        //middleware para criptograf
 
 /*Status Code Usados
 500 - Erro Interno
-401 - Não autorizado/Não encontrado
+401 - Não autorizado
+404 - Não encontrado
 201 - Inserido com Sucesso
 200 - Alterado/Pesquisa com Sucesso
 */
@@ -13,7 +14,7 @@ function Login(req, res){
         if (err){
             res.status(500).send(err) //qdo der erro interno no model, é passado a msg do erro
         }else if (result.length == 0){
-            res.status(401).json({erro:'Usuário/Senha inválido.'})           
+            res.status(404).json({erro:'Usuário/Senha inválido.'})           
         }else{
             if (result[0].ativousuario === 'S') { //Verifico se o usuario esta ativo, caso sim, faço o comparativo da senha
                 if (await bcrypt.compare(req.body.senha, result[0].senhausuario)) { //comparando a senha do BD com a recebida
