@@ -1,5 +1,7 @@
 Olá, essa API faz parte do processo seletivo da NicePlanet.
 
+email: kenio@gtasistemas.com.br
+
 Para esse projeto foi usado NodeJs salvando informações em um BD MySql.
 1. No NodeJs
     npm     : para gerenciador de pacotes;
