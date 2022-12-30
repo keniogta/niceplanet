@@ -1,8 +1,9 @@
-import { Router } from "express";
-import controllerLogin from "../controllers/controller.login.js";
+import { Router } from "express"; //middleware de distribuição da rota
+import controllerLogin from "../controllers/controller.login.js"; //importando o controler do login
 
 const routeLogin = Router();
 
+//Rotas
 routeLogin.get('/v1/login',controllerLogin.Login);
 
 export default routeLogin;
