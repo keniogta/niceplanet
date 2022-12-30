@@ -28,16 +28,10 @@ Para esse projeto foi usado NodeJs salvando informações em um BD MySql.
     3.3. Pasta Models
         Pasta que contem os arquivos de manipulção do BD (select, insert, update,...)
 
-4. Documentação API
-    https://www.postman.com/gold-firefly-864940/workspace/nice-planet
+4.  Documentação API https://www.postman.com/gold-firefly-864940/workspace/nice-planet
 
-5. Usuarios/Senhas
-    * NodeJs -> Basic-Auth.js (Foi usado uma autenticação basica);
-        username:   nice_planet
-        password:   @pass_nice
-    * MySql -> database.js
-        username:   root
-        password:   @#Gta147123
-        database:   bd_nice
+5.  Usuarios/Senhas
+        NodeJs -> Basic-Auth.js (Foi usado uma autenticação basica); username: nice_planet password: @pass_nice
+        MySql -> database.js username: root password: @#Gta147123 database: bd_nice
     
 
