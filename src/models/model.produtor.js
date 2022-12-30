@@ -2,6 +2,15 @@ import { db } from "../config/database.js"; //import para const "db" funçoes do
 
 function Inserir(dadosProdutor, cb){
     db.getConnection((err, conn) => { //abro um pool de conexao com bd
+        /*//Verificando se o cpf do produtor já existe
+        conn.query('select p.* from produtor p where p.cpfprodutor = ?', [dadosProdutor.cpf], (err, result) => {
+            if (err) {
+                cb(err, result)
+            } else if (result.length > 0) { //caso o cpf já exista cadastrado no bd
+                
+            }
+                
+        })*/
         conn.beginTransaction((err) => { //inicio uma transação
             let ssql = 'insert into produtor (csusuario, nomeprodutor, cpfprodutor, ativoprodutor) ';
             ssql += 'values (?, ?, ?, "S")';

@@ -25,5 +25,8 @@ Para esse projeto foi usado NodeJs salvando informações em um BD MySql.
         Pasta que contem os arquivos de tratamentos das request
     3.3. Pasta Models
         Pasta que contem os arquivos de manipulção do BD (select, insert, update,...)
+
+4. Documentação API
+    https://www.postman.com/gold-firefly-864940/workspace/nice-planet
     
 
