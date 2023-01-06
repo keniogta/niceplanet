@@ -38,15 +38,15 @@ Para esse projeto foi usado NodeJs salvando informações em um BD MySql. <br>
     6.1.    Baixe o aplicativo; <br>
     ![dwBanner](https://www.systecagricola.com.br/imagens/nice/1.png) <br>
     6.2.    Extrai o arquivo em uma pasta de sua preferencia <br>
-    6.3.    Abra o VSCode em menu Arquivo-> Abrir Pasta (selecione a pasta onde extraiu o arquivo)
+    6.3.    Abra o VSCode em menu Arquivo-> Abrir Pasta (selecione a pasta onde extraiu o arquivo) <br>
     ![dwBanner](https://www.systecagricola.com.br/imagens/nice/2.png) <br>
-    6.4.    Dentro "terminal" (Ctrl+Shift+') irá aparecer a pasta já selecionada, no meu caso eu extrai na F:\niceplanet-main
+    6.4.    Dentro "terminal" (Ctrl+Shift+') irá aparecer a pasta já selecionada, no meu caso eu extrai na F:\niceplanet-main <br>
     ![dwBanner](https://www.systecagricola.com.br/imagens/nice/3.png) <br>
-    6.5.    Digite: npm install -g nodemon (para instalar as dependencias globais do nodemon)
+    6.5.    Digite: npm install -g nodemon (para instalar as dependencias globais do nodemon) <br>
     6.6.    Digite: nodemon \src\index.js (para iniciar o servidor node)<br>
     ![dwBanner](https://www.systecagricola.com.br/imagens/nice/4.png) <br>
     
-    * Caso ocorra algum erro, fazer instalação do npm, com: npm init
+    * Caso ocorra algum erro, fazer instalação do npm, com: npm init <br>
 
 7. Video de instalação <br>
 https://www.systecagricola.com.br/imagens/nice/Como_Instalar.rar
