@@ -33,5 +33,10 @@ Para esse projeto foi usado NodeJs salvando informações em um BD MySql.
 5.  Usuarios/Senhas
         NodeJs -> Basic-Auth.js (Foi usado uma autenticação basica); username: nice_planet password: @pass_nice
         MySql -> database.js username: root password: @#Gta147123 database: bd_nice
+
+6. Passo a Passo <br>
+    6.1.    Baixe o aplicativo; <br>
+    ![dwBanner](https://www.systecagricola.com.br/imagens/nice/1.png)
+    
     
 
