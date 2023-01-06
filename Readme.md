@@ -47,6 +47,9 @@ Para esse projeto foi usado NodeJs salvando informações em um BD MySql. <br>
     ![dwBanner](https://www.systecagricola.com.br/imagens/nice/4.png) <br>
     
     * Caso ocorra algum erro, fazer instalação do npm, com: npm init
+
+7. Video de instalação <br>
+https://www.systecagricola.com.br/imagens/nice/Como_Instalar.rar
     
     
 
